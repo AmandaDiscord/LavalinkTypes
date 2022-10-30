@@ -1,0 +1,25 @@
+{
+  "name": "lavalink-types",
+  "version": "1.0.0",
+  "description": "An unofficial package for types returned by LavaLink",
+  "main": "v3-current.js",
+  "types": "v3-current.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmandaDiscord/LavalinkTypes.git"
+  },
+  "keywords": [
+    "lavalink",
+    "typings",
+    "discord"
+  ],
+  "author": "PapiOphidian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmandaDiscord/LavalinkTypes/issues"
+  },
+  "homepage": "https://github.com/AmandaDiscord/LavalinkTypes#readme"
+}
