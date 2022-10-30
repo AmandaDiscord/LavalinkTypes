@@ -175,7 +175,7 @@ export type PlaylistInfo = {
 }
 
 export type TrackInfo = {
-	identifer: string;
+	identifier: string;
 	isSeekable: boolean;
 	author: string;
 	length: number;
