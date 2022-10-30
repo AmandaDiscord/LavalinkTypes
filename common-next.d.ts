@@ -9,10 +9,6 @@ import {
 	PluginMeta
 } from "./common";
 
-// HTTP routes
-
-export type TrackDecodingResult = { encoded: string; info: TrackInfo; } | Array<{ encoded: string; info: TrackInfo; }>;
-
 export type Player = {
 	guildId: string;
 	track: {

@@ -9,10 +9,6 @@ import {
 
 export * from "./common";
 
-// HTTP routes
-
-export type TrackDecodingResult = TrackInfo | Array<TrackInfo>;
-
 // WS data
 
 export type PlayData = {
