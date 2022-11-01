@@ -90,6 +90,7 @@ export type TrackStuckEvent = {
 export type WebSocketClosedEvent = {
 	op: "event";
 	type: "WebSocketClosedEvent";
+	guildId: string;
 	code: 4001 | 4002 | 4003 | 4004 | 4005 | 4006 | 4009 | 4011 | 4012 | 4014 | 4015 | 4016;
 	reason: string;
 	byRemote: boolean;
