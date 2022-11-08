@@ -72,4 +72,6 @@ export interface TrackExceptionEvent extends TrackExceptionEvnt {
 	track: string;
 }
 
+export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent;
+
 export const version: "v3-current";

@@ -93,6 +93,8 @@ export interface TrackExceptionEvent extends TrackExceptionEvnt {
 	encodedTrack: string;
 }
 
+export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent;
+
 export type ReadyData = {
 	resumed?: boolean;
 	sessionId: string;

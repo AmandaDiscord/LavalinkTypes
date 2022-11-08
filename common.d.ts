@@ -96,8 +96,6 @@ export type WebSocketClosedEvent = {
 	byRemote: boolean;
 }
 
-export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent;
-
 export type Filters = {
 	volume?: number;
 	equalizer?: Array<Equalizer>;
