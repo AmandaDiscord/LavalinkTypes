@@ -5,6 +5,7 @@ import {
 	TrackEndEvent as TrackEndEvnt,
 	TrackStuckEvent as TrackStuckEvnt,
 	TrackExceptionEvent as TrackExceptionEvnt,
+	WebSocketClosedEvent,
 	Filters,
 	PluginMeta
 } from "./common";
@@ -93,7 +94,7 @@ export interface TrackExceptionEvent extends TrackExceptionEvnt {
 	encodedTrack: string;
 }
 
-export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent;
+export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent | WebSocketClosedEvent;
 
 export type ReadyData = {
 	resumed?: boolean;

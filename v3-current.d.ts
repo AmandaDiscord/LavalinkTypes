@@ -4,7 +4,8 @@ import {
 	TrackStartEvent as TrackStartEvnt,
 	TrackEndEvent as TrackEndEvnt,
 	TrackStuckEvent as TrackStuckEvnt,
-	TrackExceptionEvent as TrackExceptionEvnt
+	TrackExceptionEvent as TrackExceptionEvnt,
+	WebSocketClosedEvent
 } from "./common";
 
 export * from "./common";
@@ -72,6 +73,6 @@ export interface TrackExceptionEvent extends TrackExceptionEvnt {
 	track: string;
 }
 
-export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent;
+export type Event = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent | WebSocketClosedEvent;
 
 export const version: "v3-current";
