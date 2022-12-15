@@ -16,7 +16,7 @@ export type PlayerUpdate = {
 }
 
 export type PlayerState = {
-	time: string;
+	time: number;
 	position?: number;
 	connected: boolean;
 	ping: number;
@@ -63,7 +63,7 @@ export type TrackEndEvent = {
 	reason: TrackEndReason;
 }
 
-export type TrackEndReason = "FINISH" | "LOAD_FAILED" | "STOPPED" | "REPLACED" | "CLEANUP";
+export type TrackEndReason = "FINISHED" | "LOAD_FAILED" | "STOPPED" | "REPLACED" | "CLEANUP";
 
 export type TrackExceptionEvent = {
 	op: "event";
