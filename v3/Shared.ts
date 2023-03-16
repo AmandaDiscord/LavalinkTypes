@@ -1,10 +1,10 @@
 export type Exception = {
-	message: string;
+	message: string | null;
 	severity: Severity;
 	cause: string;
 }
 
-export type Severity = "COMMON" | "SUSPICIOUS" | "FATAL";
+export type Severity = "COMMON" | "SUSPICIOUS" | "FAULT";
 
 export type Track = {
 	encoded: string;
@@ -29,7 +29,7 @@ export type Stats = {
 	uptime: number;
 	memory: MemoryStats;
 	cpu: CPUStats;
-	frameStats: FrameStats;
+	frameStats: FrameStats | null;
 }
 
 export type MemoryStats = {

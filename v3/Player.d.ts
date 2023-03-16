@@ -25,19 +25,24 @@ export type PlayerEventType = "TrackStartEvent" | "TrackEndEvent" | "TrackExcept
 
 type PlayerEventPayload<Event extends PlayerEventType, D = unknown> = { type: Event, guildId: string } & D;
 
-export type TrackStartEventData = {};
+export type TrackStartEventData = {
+	encodedTrack: string;
+};
 
 export type TrackEndEventData = {
+	encodedTrack: string;
 	reason: TrackEndReason;
 }
 
 export type TrackEndReason = "FINISHED" | "LOAD_FAILED" | "STOPPED" | "REPLACED" | "CLEANUP";
 
 export type TrackExceptionEventData = {
+	encodedTrack: string;
 	exception: Exception;
 }
 
 export type TrackStuckEventData = {
+	encodedTrack: string;
 	thresholdMs: number;
 }
 

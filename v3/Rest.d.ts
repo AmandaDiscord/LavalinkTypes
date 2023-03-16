@@ -1,5 +1,6 @@
-import { Exception, TrackInfo, Track, Stats } from "./Shared";
+import { Exception, Track, Stats } from "./Shared";
 import { Player, Filters, VoiceState } from "./Player";
+import { RequiredInChild, NullChild } from "./Utilities";
 
 export type ErrorResponse = {
 	timestamp: number;
@@ -14,18 +15,18 @@ export type GetPlayersResult = Array<Player>;
 
 export type GetPlayerResult = Player;
 
-export type UpdatePlayerData = {
-	encodedTrack?: string | null;
-	identifier?: string;
+type BaseUpdatePlayerData = {
 	position?: number;
 	endTime?: number;
 	volume?: number;
 	paused?: boolean;
 	filters?: Filters;
-	voice?: VoiceState;
+	voice?: Omit<VoiceState, "connected" | "ping">;
 }
 
-export type UpdatePlayerResult = Player;
+export type UpdatePlayerData = (BaseUpdatePlayerData & { encodedTrack?: string | null; }) | (BaseUpdatePlayerData & { identifier?: string; });
+
+export type UpdatePlayerResult = RequiredInChild<Player, "voice">;
 
 export type DestroyPlayerResult = void;
 
@@ -85,6 +86,6 @@ export type PluginMeta = {
 
 export type GetLavalinkInfoResult = LavalinkInfo;
 
-export type GetLavalinkStatsResult = Omit<Stats, "frameStats">;
+export type GetLavalinkStatsResult = NullChild<Stats, "frameStats">;
 
 export type GetLavalinkVersionResult = string;
