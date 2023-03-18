@@ -61,6 +61,7 @@ export type LavalinkInfo = {
 	git: LavalinkGit;
 	jvm: string;
 	lavaplayer: string;
+	filters: Array<string>;
 	sourceManagers: Array<string>;
 	plugins: Array<PluginMeta>;
 }
@@ -70,7 +71,7 @@ export type LavalinkVersion = {
 	major: number;
 	minor: number;
 	patch: number;
-	preRelease?: string;
+	preRelease: string | null;
 }
 
 export type LavalinkGit = {
