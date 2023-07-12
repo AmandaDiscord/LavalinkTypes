@@ -5,6 +5,7 @@ export type Player = {
 	track: Track | null;
 	volume: number;
 	paused: boolean;
+	state: PlayerState;
 	voice: VoiceState;
 	filters: Filters;
 }
@@ -16,33 +17,33 @@ export type PlayerUpdate = {
 
 export type PlayerState = {
 	time: number;
-	position?: number;
+	position: number;
 	connected: boolean;
 	ping: number;
 }
 
 export type PlayerEventType = "TrackStartEvent" | "TrackEndEvent" | "TrackExceptionEvent" | "TrackStuckEvent" | "WebSocketClosedEvent";
 
-type PlayerEventPayload<Event extends PlayerEventType, D = unknown> = { type: Event, guildId: string } & D;
+type PlayerEventPayload<Event extends PlayerEventType, D extends Record<any, any> = object> = { type: Event, guildId: string } & D;
 
 export type TrackStartEventData = {
-	encodedTrack: string;
-};
+	track: Track;
+}
 
 export type TrackEndEventData = {
-	encodedTrack: string;
+	track: Track;
 	reason: TrackEndReason;
 }
 
-export type TrackEndReason = "FINISHED" | "LOAD_FAILED" | "STOPPED" | "REPLACED" | "CLEANUP";
+export type TrackEndReason = "finished" | "loadFailed" | "stopped" | "replaced" | "cleanup";
 
 export type TrackExceptionEventData = {
-	encodedTrack: string;
+	track: Track;
 	exception: Exception;
 }
 
 export type TrackStuckEventData = {
-	encodedTrack: string;
+	track: Track;
 	thresholdMs: number;
 }
 
@@ -75,6 +76,16 @@ export type Filters = {
 	distortion?: Distortion;
 	channelMix?: ChannelMix;
 	lowPass?: LowPass;
+	pluginFilters?: {
+		[plugin: string]: {
+			[filter: string]: any;
+		}
+	}
+}
+
+export type Equalizer = {
+	band: number;
+	gain: number;
 }
 
 export type Karaoke = {
@@ -82,11 +93,6 @@ export type Karaoke = {
 	monoLevel?: number;
 	filterBand?: number;
 	filterWidth?: number;
-}
-
-export type Equalizer = {
-	band: number;
-	gain: number;
 }
 
 export type Timescale = {
@@ -100,7 +106,10 @@ export type Tremolo = {
 	depth?: number;
 }
 
-export type Vibrato = Tremolo;
+export type Vibrato = {
+	frequency?: number;
+	depth?: number;
+}
 
 export type Rotation = {
 	rotationHz?: number;
@@ -132,6 +141,4 @@ export type VoiceState = {
 	token: string;
 	endpoint: string;
 	sessionId: string;
-	connected?: boolean;
-	ping?: number;
 }

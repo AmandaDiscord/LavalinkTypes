@@ -1,8 +1,8 @@
 {
   "name": "lavalink-types",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "An unofficial package for types returned by LavaLink",
-  "main": "index.js",
+  "main": "v3.js",
   "types": "v3.d.ts",
   "repository": {
     "type": "git",
