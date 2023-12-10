@@ -10,6 +10,7 @@ export type Track = {
 	encoded: string;
 	info: TrackInfo;
 	pluginInfo: Record<any, any>;
+	userData: Record<any, any>
 }
 
 export type TrackInfo = {

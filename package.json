@@ -1,6 +1,6 @@
 {
   "name": "lavalink-types",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "An unofficial package for types returned by LavaLink",
   "main": "v3.js",
   "types": "v3.d.ts",

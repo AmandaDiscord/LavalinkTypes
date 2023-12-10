@@ -14,7 +14,8 @@ export type GetPlayersResult = Array<Player>;
 
 export type GetPlayerResult = Player;
 
-type BaseUpdatePlayerData = {
+export type UpdatePlayerData = {
+	track?: UpdatePlayerTrack;
 	position?: number;
 	endTime?: number | null;
 	volume?: number;
@@ -23,7 +24,11 @@ type BaseUpdatePlayerData = {
 	voice?: VoiceState;
 }
 
-export type UpdatePlayerData = (BaseUpdatePlayerData & { encodedTrack?: string | null; }) | (BaseUpdatePlayerData & { identifier?: string; });
+type BaseUpdatePlayerTrack = {
+	userData?: Record<any, any>;
+}
+
+export type UpdatePlayerTrack = (BaseUpdatePlayerTrack & { encoded?: string | null }) | (BaseUpdatePlayerTrack & { identifier?: string });
 
 export type UpdatePlayerResult = Player;
 
