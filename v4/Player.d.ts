@@ -139,6 +139,6 @@ export type LowPass = {
 
 export type VoiceState = {
 	token: string;
-	endpoint: string;
+	endpoint: string | null;
 	sessionId: string;
 }
