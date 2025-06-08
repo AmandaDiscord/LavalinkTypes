@@ -1,9 +1,9 @@
 {
   "name": "lavalink-types",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "An unofficial package for types returned by LavaLink",
-  "main": "v3.js",
-  "types": "v3.d.ts",
+  "main": "v4.js",
+  "types": "v4.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmandaDiscord/LavalinkTypes.git"
