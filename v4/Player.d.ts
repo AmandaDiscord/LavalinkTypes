@@ -1,57 +1,67 @@
 import type { Exception, Track } from "./Shared";
 
+/**
+ * Represents a player in the Lavalink system.
+ */
 export type Player = {
-	guildId: string;
-	track: Track | null;
-	volume: number;
-	paused: boolean;
-	state: PlayerState;
-	voice: VoiceState;
-	filters: Filters;
-}
+  /**
+   * The guild ID for the player.
+   */
+  guildId: string;
+  /**
+   * The track currently being played by the player.
+   * If no track is being played, this will be null.
+   */
+  track: Track | null;
+  volume: number;
+  paused: boolean;
+  state: PlayerState;
+  voice: VoiceState;
+  filters: Filters;
+};
 
 export type PlayerUpdate = {
-	guildId: string;
-	state: PlayerState;
-}
+  guildId: string;
+  state: PlayerState;
+};
 
 export type PlayerState = {
-	time: number;
-	position: number;
-	connected: boolean;
-	ping: number;
-}
+  time: number;
+  position: number;
+  connected: boolean;
+  ping: number;
+};
 
 export type PlayerEventType = "TrackStartEvent" | "TrackEndEvent" | "TrackExceptionEvent" | "TrackStuckEvent" | "WebSocketClosedEvent";
 
-type PlayerEventPayload<Event extends PlayerEventType, D extends Record<any, any> = object> = { type: Event, guildId: string } & D;
+type PlayerEventPayload<Event extends PlayerEventType, D extends Record<any, any> = object> = { type: Event; guildId: string } & D;
 
 export type TrackStartEventData = {
-	track: Track;
-}
+  track: Track;
+};
 
 export type TrackEndEventData = {
-	track: Track;
-	reason: TrackEndReason;
-}
+  track: Track;
+  reason: TrackEndReason;
+};
 
 export type TrackEndReason = "finished" | "loadFailed" | "stopped" | "replaced" | "cleanup";
 
 export type TrackExceptionEventData = {
-	track: Track;
-	exception: Exception;
-}
+  track: Track;
+  exception: Exception;
+};
 
 export type TrackStuckEventData = {
-	track: Track;
-	thresholdMs: number;
-}
+  track: Track;
+  thresholdMs: number;
+};
 
 export type WebSocketClosedEventData = {
-	code: 4001 | 4002 | 4003 | 4004 | 4005 | 4006 | 4009 | 4011 | 4012 | 4014 | 4015 | 4016;
-	reason: string;
-	byRemote: boolean;
-}
+  code: 4001 | 4002 | 4003 | 4004 | 4005 | 4006 | 4009 | 4011 | 4012 | 4014 | 4015 | 4016;
+  reason: string;
+  byRemote: boolean;
+};
 
 export type TrackStartEvent = PlayerEventPayload<"TrackStartEvent", TrackStartEventData>;
 
@@ -66,79 +76,79 @@ export type WebSocketClosedEvent = PlayerEventPayload<"WebSocketClosedEvent", We
 export type PlayerEvent = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent | WebSocketClosedEvent;
 
 export type Filters = {
-	volume?: number;
-	equalizer?: Array<Equalizer>;
-	karaoke?: Karaoke;
-	timescale?: Timescale;
-	tremolo?: Tremolo;
-	vibrato?: Vibrato;
-	rotation?: Rotation;
-	distortion?: Distortion;
-	channelMix?: ChannelMix;
-	lowPass?: LowPass;
-	pluginFilters?: {
-		[plugin: string]: {
-			[filter: string]: any;
-		}
-	}
-}
+  volume?: number;
+  equalizer?: Array<Equalizer>;
+  karaoke?: Karaoke;
+  timescale?: Timescale;
+  tremolo?: Tremolo;
+  vibrato?: Vibrato;
+  rotation?: Rotation;
+  distortion?: Distortion;
+  channelMix?: ChannelMix;
+  lowPass?: LowPass;
+  pluginFilters?: {
+    [plugin: string]: {
+      [filter: string]: any;
+    };
+  };
+};
 
 export type Equalizer = {
-	band: number;
-	gain: number;
-}
+  band: number;
+  gain: number;
+};
 
 export type Karaoke = {
-	level?: number;
-	monoLevel?: number;
-	filterBand?: number;
-	filterWidth?: number;
-}
+  level?: number;
+  monoLevel?: number;
+  filterBand?: number;
+  filterWidth?: number;
+};
 
 export type Timescale = {
-	speed?: number;
-	pitch?: number;
-	rate?: number;
-}
+  speed?: number;
+  pitch?: number;
+  rate?: number;
+};
 
 export type Tremolo = {
-	frequency?: number;
-	depth?: number;
-}
+  frequency?: number;
+  depth?: number;
+};
 
 export type Vibrato = {
-	frequency?: number;
-	depth?: number;
-}
+  frequency?: number;
+  depth?: number;
+};
 
 export type Rotation = {
-	rotationHz?: number;
-}
+  rotationHz?: number;
+};
 
 export type Distortion = {
-	sinOffset?: number;
-	sinScale?: number;
-	cosOffset?: number;
-	cosScale?: number;
-	tanOffset?: number;
-	tanScale?: number;
-	offset?: number;
-	scale?: number;
-}
+  sinOffset?: number;
+  sinScale?: number;
+  cosOffset?: number;
+  cosScale?: number;
+  tanOffset?: number;
+  tanScale?: number;
+  offset?: number;
+  scale?: number;
+};
 
 export type ChannelMix = {
-	leftToLeft?: number;
-	leftToRight?: number;
-	rightToLeft?: number;
-	rightToRight?: number;
-}
+  leftToLeft?: number;
+  leftToRight?: number;
+  rightToLeft?: number;
+  rightToRight?: number;
+};
 
 export type LowPass = {
-	smoothing?: number;
-}
+  smoothing?: number;
+};
 
 export type VoiceState = {
-	token: string;
-	endpoint: string | null;
-	sessionId: string;
-}
+  token: string;
+  endpoint: string | null;
+  sessionId: string;
+};
