@@ -141,4 +141,5 @@ export type VoiceState = {
 	token: string;
 	endpoint: string | null;
 	sessionId: string;
+	channelId: string | null;
 }

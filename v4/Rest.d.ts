@@ -21,7 +21,7 @@ export type UpdatePlayerData = {
 	volume?: number;
 	paused?: boolean;
 	filters?: Filters;
-	voice?: VoiceState;
+	voice?: Omit<VoiceState, "channelId"> & { channelId: string };
 }
 
 type BaseUpdatePlayerTrack = {
